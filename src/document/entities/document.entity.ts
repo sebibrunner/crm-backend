@@ -1,18 +1,24 @@
 import { Customer } from 'src/customer/entities/customer.entity';
 import { Position } from 'src/position/entities/position.entity';
 import { User } from 'src/user/entities/user.entity';
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
 @Entity()
 export class Document {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @OneToMany(() => Position, (position) => position.id)
   positions: Position[];
 
-  @Column()
+  @OneToOne(() => Customer)
   customer: Customer;
 
-  @Column()
+  @OneToOne(() => User)
   user: User;
 }

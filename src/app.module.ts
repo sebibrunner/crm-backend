@@ -10,6 +10,8 @@ import { CustomerModule } from './customer/customer.module';
 import { UserModule } from './user/user.module';
 import { AddressModule } from './address/address.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CompanyModule } from './company/company.module';
+import { BankdataModule } from './bankdata/bankdata.module';
 
 @Module({
   imports: [
@@ -31,6 +33,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     CustomerModule,
     UserModule,
     AddressModule,
+    CompanyModule,
+    BankdataModule,
   ],
   controllers: [AppController],
   providers: [AppService],

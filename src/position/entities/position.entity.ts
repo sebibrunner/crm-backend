@@ -1,5 +1,5 @@
 import { Product } from 'src/product/entities/product.entity';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Position {
@@ -9,6 +9,6 @@ export class Position {
   @Column()
   quantity: number;
 
-  @Column()
+  @OneToOne(() => Product)
   product: Product;
 }
