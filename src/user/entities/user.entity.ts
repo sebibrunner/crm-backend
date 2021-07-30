@@ -11,4 +11,7 @@ export class User {
 
   @OneToOne(() => Company)
   company: Company;
+
+  @Column()
+  password: string;
 }
