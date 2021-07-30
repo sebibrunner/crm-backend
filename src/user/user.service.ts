@@ -33,6 +33,14 @@ export class UserService {
     }
   }
 
+  async findOneByUsername(username: string) {
+    try {
+      return await this.userRepository.findOne({ where: { username } });
+    } catch (err) {
+      throw new HttpException(err, HttpStatus.BAD_REQUEST);
+    }
+  }
+
   update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
   }
