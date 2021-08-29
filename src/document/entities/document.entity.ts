@@ -7,6 +7,7 @@ import {
   OneToMany,
   OneToOne,
   JoinColumn,
+  Column,
 } from 'typeorm';
 @Entity()
 export class Document {
@@ -16,9 +17,19 @@ export class Document {
   @OneToMany(() => Position, (position) => position.id)
   positions: Position[];
 
+  @Column()
+  isInvoice: Boolean;
+
+  @Column()
+  isOffer: Boolean;
+
   @OneToOne(() => Contact)
   contact: Contact;
 
   @OneToOne(() => User)
   user: User;
+
+  @Column()
+  date: Date;
+  
 }
