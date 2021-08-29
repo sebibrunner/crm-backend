@@ -1,4 +1,4 @@
-import { Customer } from 'src/customer/entities/customer.entity';
+import { Contact } from 'src/contact/entities/contact.entity';
 import { Position } from 'src/position/entities/position.entity';
 import { User } from 'src/user/entities/user.entity';
 import {
@@ -16,8 +16,8 @@ export class Document {
   @OneToMany(() => Position, (position) => position.id)
   positions: Position[];
 
-  @OneToOne(() => Customer)
-  customer: Customer;
+  @OneToOne(() => Contact)
+  contact: Contact;
 
   @OneToOne(() => User)
   user: User;

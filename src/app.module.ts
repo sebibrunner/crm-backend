@@ -6,12 +6,11 @@ import { PositionModule } from './position/position.module';
 import { DocumentModule } from './document/document.module';
 import { OfferModule } from './offer/offer.module';
 import { InvoiceModule } from './invoice/invoice.module';
-import { CustomerModule } from './customer/customer.module';
+import { ContactModule } from './contact/contact.module';
 import { UserModule } from './user/user.module';
 import { AddressModule } from './address/address.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CompanyModule } from './company/company.module';
-import { BankdataModule } from './bankdata/bankdata.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
@@ -43,11 +42,10 @@ console.log("DATABASE_URL: ", process.env.DATABASE_URL);
     DocumentModule,
     OfferModule,
     InvoiceModule,
-    CustomerModule,
+    ContactModule,
     UserModule,
     AddressModule,
     CompanyModule,
-    BankdataModule,
     AuthModule,
     UsersModule,
   ],

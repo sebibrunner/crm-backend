@@ -12,5 +12,8 @@ export class Address {
   street: string;
 
   @Column()
+  city: string;
+
+  @Column()
   houseNumber: number;
 }

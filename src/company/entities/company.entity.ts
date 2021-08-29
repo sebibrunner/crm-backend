@@ -1,4 +1,4 @@
-import { BankData } from 'src/bankdata/entities/bankdata.entity';
+import { Address } from 'src/address/entities/address.entity';
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -9,6 +9,6 @@ export class Company {
   @Column()
   companyName: string;
 
-  @OneToOne(() => BankData)
-  bankData: BankData;
+  @OneToOne(() => Address)
+  address: Address;
 }
