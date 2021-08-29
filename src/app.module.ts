@@ -18,6 +18,9 @@ import { ConfigModule } from '@nestjs/config';
 
 const ENV = process.env.NODE_ENV;
 
+console.log("ENV: ", ENV);
+console.log("DATABASE_URL: ", process.env.DATABASE_URL);
+
 @Module({
   imports: [
     ConfigModule.forRoot({
