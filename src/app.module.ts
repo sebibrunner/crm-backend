@@ -7,33 +7,25 @@ import { DocumentModule } from './document/document.module';
 import { ContactModule } from './contact/contact.module';
 import { UserModule } from './user/user.module';
 import { AddressModule } from './address/address.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
 import { CompanyModule } from './company/company.module';
 import { AuthModule } from './auth/auth.module';
-import { ConfigModule } from '@nestjs/config';
-
-const ENV = process.env.NODE_ENV;
-
-console.log("ENV: ", ENV);
-console.log("DATABASE_URL: ", process.env.DATABASE_URL);
+import * as Joi from '@hapi/joi';
+import { DatabaseModule } from './database.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: !ENV ? '.env' : `.env.${ENV}`,
+      validationSchema: Joi.object({
+        POSTGRES_HOST: Joi.string().required(),
+        POSTGRES_PORT: Joi.number().required(),
+        POSTGRES_USER: Joi.string().required(),
+        POSTGRES_PASSWORD: Joi.string().required(),
+        POSTGRES_DB: Joi.string().required(),
+        PORT: Joi.number(),
+      })
     }),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      url: process.env.DATABASE_URL,
-      autoLoadEntities: true,
-      synchronize: true,
-      ssl: true,
-      extra: {
-        ssl: {
-          rejectUnauthorized: false,
-        },
-      },
-    }),
+    DatabaseModule,
     ProductModule,
     PositionModule,
     DocumentModule,
