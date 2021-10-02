@@ -5,7 +5,7 @@ import { ProductModule } from './product/product.module';
 import { PositionModule } from './position/position.module';
 import { DocumentModule } from './document/document.module';
 import { ContactModule } from './contact/contact.module';
-import { UserModule } from './user/user.module';
+import { UsersModule } from './users/users.module';
 import { AddressModule } from './address/address.module';
 import { ConfigModule } from '@nestjs/config';
 import { CompanyModule } from './company/company.module';
@@ -30,7 +30,7 @@ import { DatabaseModule } from './database.module';
     PositionModule,
     DocumentModule,
     ContactModule,
-    UserModule,
+    UsersModule,
     AddressModule,
     CompanyModule,
     AuthModule,

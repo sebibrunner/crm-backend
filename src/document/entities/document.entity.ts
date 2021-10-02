@@ -1,6 +1,6 @@
 import { Contact } from 'src/contact/entities/contact.entity';
 import { Position } from 'src/position/entities/position.entity';
-import { User } from 'src/user/entities/user.entity';
+import { User } from 'src/users/entities/user.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
