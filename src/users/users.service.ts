@@ -21,13 +21,21 @@ export class UsersService {
   }
 
   async findById(id: number) {
-    return await User.findOne(id);
+    return await this.findById(id);
   }
 
   async findByEmail(email: string) {
     return await User.findOne({
       where: {
         email: email,
+      },
+    });
+  }
+  
+  async findByUsername(username: string): Promise<User | undefined> {
+    return await User.findOne({
+      where: {
+        username: username,
       },
     });
   }
