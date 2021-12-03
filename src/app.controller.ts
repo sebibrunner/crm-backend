@@ -17,7 +17,6 @@ export class AppController {
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   async getProfile(@Request() req) {
-    console.log("req.user", req.user);
     const user = this.usersService.findByUsername(req.user.username);
     delete (await user).password;
     return user;
