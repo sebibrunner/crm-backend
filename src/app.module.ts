@@ -1,39 +1,25 @@
+import { ConfigModule } from '@nestjs/config';
+
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ProductModule } from './product/product.module';
-import { PositionModule } from './position/position.module';
-import { DocumentModule } from './document/document.module';
-import { ContactModule } from './contact/contact.module';
 import { UsersModule } from './users/users.module';
-import { AddressModule } from './address/address.module';
-import { ConfigModule } from '@nestjs/config';
-import { CompanyModule } from './company/company.module';
-import { AuthModule } from './auth/auth.module';
-import * as Joi from '@hapi/joi';
-import { DatabaseModule } from './database.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      validationSchema: Joi.object({
-        POSTGRES_HOST: Joi.string().required(),
-        POSTGRES_PORT: Joi.number().required(),
-        POSTGRES_USER: Joi.string().required(),
-        POSTGRES_PASSWORD: Joi.string().required(),
-        POSTGRES_DB: Joi.string().required(),
-        PORT: Joi.number(),
-      })
-    }),
-    DatabaseModule,
-    ProductModule,
-    PositionModule,
-    DocumentModule,
-    ContactModule,
     UsersModule,
-    AddressModule,
-    CompanyModule,
-    AuthModule,
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRoot({
+      url: process.env.DATABASE_URL,
+      type: 'postgres',
+      ssl: {
+        rejectUnauthorized: false,
+      },
+      entities: ['dist/**/*.entity{.ts,.js}'],
+      synchronize: true, // This for development
+      autoLoadEntities: true,
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
