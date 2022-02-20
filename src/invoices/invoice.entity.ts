@@ -1,6 +1,12 @@
 import { Contact } from 'src/contacts/contact.entity';
 import { Position } from 'src/positions/position.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('invoices')
 export class Invoice{
@@ -13,6 +19,6 @@ export class Invoice{
   @OneToMany(type => Position, position => position.id)
   positions: Position[];
 
-  @Column()
+  @OneToOne(type => Contact, receiver => receiver.id, { cascade: true })
   receiver: Contact;
 }
