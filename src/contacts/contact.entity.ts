@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Invoice } from 'src/invoices/invoice.entity';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('contacs')
 export class Contact{
@@ -22,4 +23,7 @@ export class Contact{
 
   @Column()
   zip: number;
+
+  @OneToOne(() => Invoice, (invoice: Invoice) => invoice.id)
+  invoice: Invoice;
 }

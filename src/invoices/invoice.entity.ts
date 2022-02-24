@@ -3,6 +3,7 @@ import { Position } from 'src/positions/position.entity';
 import {
   Column,
   Entity,
+  JoinColumn,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -16,9 +17,10 @@ export class Invoice {
   @Column()
   invoicedate: Date;
 
-  @OneToMany((type) => Position, (position) => position.id)
-  positions: Position[];
+  @OneToMany(() => Position, (position: Position) => position.id)
+  public positions: Position[];
 
-  @OneToOne((type) => Contact, (receiver) => receiver.id, { cascade: true })
-  receiver: Contact;
+  @OneToOne(() => Contact, { eager: true, cascade: true })
+  @JoinColumn()
+  public receiver: Contact;
 }
