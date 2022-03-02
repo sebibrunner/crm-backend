@@ -1,5 +1,5 @@
 import { Invoice } from 'src/invoices/invoice.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('positions')
 export class Position{
@@ -15,6 +15,5 @@ export class Position{
   @Column()
   price: number;
 
-  @ManyToOne(() => Invoice, (invoice: Invoice) => invoice.id)
-  invoice: Invoice;
+  @ManyToOne(type => Invoice, invoice => invoice.positions) invoice: Invoice;
 }
