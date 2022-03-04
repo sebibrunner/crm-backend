@@ -24,6 +24,6 @@ export class Contact{
   @Column()
   zip: number;
 
-  @OneToOne(() => Invoice, (invoice: Invoice) => invoice.id)
+  @OneToOne(type => Invoice, invoice => invoice.contact)
   invoice: Invoice;
 }

@@ -15,5 +15,6 @@ export class Position{
   @Column()
   price: number;
 
-  @ManyToOne(type => Invoice, invoice => invoice.positions) invoice: Invoice;
+  @ManyToOne(type => Invoice, invoice => invoice.positions)
+  invoice: Invoice;
 }

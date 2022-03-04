@@ -17,9 +17,11 @@ export class Invoice {
   @Column()
   invoicedate: Date;
 
-  @OneToMany(type => Position, position => position.invoice) positions: Position[];
+  @OneToMany(type => Position, position => position.invoice, { eager: true, cascade: true })
+  positions: Position[];
 
-  @OneToOne(type => Contact, { eager: true, cascade: true }) @JoinColumn()
-  receiver: Contact;
+  @OneToOne(type => Contact, contact => contact.invoice, { eager: true, cascade: true })
+  @JoinColumn()
+  contact: Contact;
 
 }
