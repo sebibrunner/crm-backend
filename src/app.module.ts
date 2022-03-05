@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PositionsModule } from './positions/positions.module';
 import { InvoicesModule } from './invoices/invoices.module';
 import { ContactsModule } from './contacts/contacs.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { ContactsModule } from './contacts/contacs.module';
       synchronize: true, // This for development
       autoLoadEntities: true,
     }),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

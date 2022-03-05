@@ -18,4 +18,8 @@ export class UsersService {
     this.usersRepository.insert(user);
     return user;
   }
+
+  findUserByUsername(username: string): Promise<User | undefined> {
+    return this.usersRepository.findOne({ username }); 
+  }
 }
