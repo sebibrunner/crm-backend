@@ -20,6 +20,18 @@ export class UsersService {
   }
 
   findUserByUsername(username: string): Promise<User | undefined> {
-    return this.usersRepository.findOne({ username }); 
+    return this.usersRepository.findOne({
+      where: {
+        username,
+      }
+    });
+  }
+
+  findUserById(id: number): Promise<User | undefined> {
+    return this.usersRepository.findOne({
+      where: {
+        id,
+      }
+    });
   }
 }

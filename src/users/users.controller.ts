@@ -16,6 +16,11 @@ export class UsersController {
     return this.userService.getUsers();
   }
 
+  @Get(':id')
+  getUser(@Body() id: number) {
+    return this.userService.findUserById(id);
+  }
+
   @Post()
   addUser(@Body() user: User) {
     return this.userService.addUser(user);
